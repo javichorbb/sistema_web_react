@@ -1,43 +1,40 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import usuariosData from "../data/usuarios.json";
+import { useNavigate, Link } from "react-router-dom";
 
-export default function Register() {
+export default function Register({ setUsuario }) {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [mensaje, setMensaje] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleRegister = (e) => {
     e.preventDefault();
 
-    const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
-    const usuariosTotales = [...usuariosData, ...usuariosGuardados];
+    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
-    const existe = usuariosTotales.find((u) => u.email === email);
-    if (existe) {
-      setMensaje("⚠️ El correo ya está registrado.");
+    if (usuarios.find((u) => u.email === email)) {
+      setError("El correo ya está registrado");
       return;
     }
 
-    const nuevoUsuario = { nombre, email, password };
-    const nuevosUsuarios = [...usuariosGuardados, nuevoUsuario];
-    localStorage.setItem("usuarios", JSON.stringify(nuevosUsuarios));
+    const nuevoUsuario = { id: Date.now(), nombre, email, password };
+    usuarios.push(nuevoUsuario);
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
 
-    setMensaje("✅ Cuenta creada con éxito. Redirigiendo al login...");
-    setTimeout(() => navigate("/login"), 2000);
+    localStorage.setItem("usuarioActivo", JSON.stringify(nuevoUsuario));
+    setUsuario(nuevoUsuario);
+    navigate("/");
   };
 
   return (
     <div className="max-w-md mx-auto mt-10 p-6 border rounded shadow-lg">
-      <h2 className="text-2xl font-bold mb-4 text-center">Crear Cuenta</h2>
-      {mensaje && <p className="text-center text-blue-600 mb-2">{mensaje}</p>}
-
+      <h2 className="text-2xl font-bold mb-4">Crear Cuenta</h2>
+      {error && <p className="text-red-500 mb-2">{error}</p>}
       <form onSubmit={handleRegister} className="flex flex-col gap-3">
         <input
           type="text"
-          placeholder="Nombre completo"
+          placeholder="Nombre"
           className="p-2 border rounded"
           value={nombre}
           onChange={(e) => setNombre(e.target.value)}
@@ -59,29 +56,19 @@ export default function Register() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-
         <button
           type="submit"
-          className="bg-green-600 text-white p-2 rounded hover:bg-green-700"
+          className="bg-green-500 text-white p-2 rounded hover:bg-green-600"
         >
-          Registrarse
+          Crear cuenta
         </button>
       </form>
-
-      <div className="mt-4 text-center flex flex-col gap-2">
-        <button
-          onClick={() => navigate("/login")}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
-        >
-          Ir al login
-        </button>
-        <button
-          onClick={() => navigate("/")}
-          className="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500 transition"
-        >
-          Volver
-        </button>
-      </div>
+      <p className="mt-3 text-gray-700">
+        ¿Ya tienes cuenta?{" "}
+        <Link to="/login" className="text-blue-600 hover:underline">
+          Iniciar sesión
+        </Link>
+      </p>
     </div>
   );
 }

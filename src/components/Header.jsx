@@ -24,7 +24,7 @@ export default function Header({ usuario, setUsuario }) {
           className="text-2xl font-bold text-blue-600 cursor-pointer"
           onClick={() => navigate("/")}
         >
-          Musical world
+          Musical World
         </h1>
 
         <nav className="hidden md:flex items-center space-x-8 font-medium">

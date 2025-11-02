@@ -5,7 +5,7 @@ function Footer() {
 
         {/* Columna 1 - Logo y descripción */}
         <div>
-          <h2 className="text-2xl font-bold text-white mb-3">Web Musical</h2>
+          <h2 className="text-2xl font-bold text-white mb-3">Musical World</h2>
           <p className="text-sm">
             Tu tienda de confianza para instrumentos musicales, accesorios y equipos de sonido.
             Inspiramos tu pasión por la música.
@@ -46,7 +46,7 @@ function Footer() {
 
       {/* Copyright */}
       <div className="text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} Web Musical. Todos los derechos reservados.
+        © {new Date().getFullYear()} Musical World. Todos los derechos reservados.
       </div>
     </footer>
   );

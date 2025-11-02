@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "nombre": "Guitarra Eléctrica Fender Stratocaster",
+    "categoria": "Guitarras",
+    "precio": 4500,
+    "imagen": "https://images.unsplash.com/photo-1511379938547-c1f69419868d"
+  },
+  {
+    "id": 2,
+    "nombre": "Batería Acústica Pearl Export",
+    "categoria": "Percusión",
+    "precio": 5200,
+    "imagen": "https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2"
+  },
+  {
+    "id": 3,
+    "nombre": "Teclado Yamaha PSR-E373",
+    "categoria": "Teclados",
+    "precio": 1800,
+    "imagen": "https://audioshop.com.pe/wp-content/uploads/2023/03/PSR-E373-600x600.jpg"
+  },
+  {
+    "id": 4,
+    "nombre": "Auriculares Audio-Technica ATH-M50X",
+    "categoria": "Accesorios",
+    "precio": 750,
+    "imagen": "https://images.unsplash.com/photo-1516116216624-53e697fedbea"
+  },
+  {
+    "id": 5,
+    "nombre": "Teclado NUX NEK-100",
+    "categoria": "Teclados",
+    "precio": 600,
+    "imagen": "https://musicmarket.com.pe/cdn/shop/files/344168025-otro-lado_700x700.jpg?v=1734125830"
+  }
+]

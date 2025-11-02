@@ -2,16 +2,16 @@
   {
     "id": 1,
     "nombre": "Guitarra Eléctrica Fender Stratocaster",
-    "categoria": "Guitarras",
-    "precio": 4500,
-    "imagen": "https://images.unsplash.com/photo-1511379938547-c1f69419868d"
+    "categoria": "Cuerdas",
+    "precio": 3500,
+    "imagen": "https://www.audiostore.com.pe/wp-content/uploads/2020/11/Tobacco-Sunburst-OK1.jpg"
   },
   {
     "id": 2,
     "nombre": "Batería Acústica Pearl Export",
     "categoria": "Percusión",
-    "precio": 5200,
-    "imagen": "https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2"
+    "precio": 2300,
+    "imagen": "https://www.samplesmusicales.com.pe/wp-content/uploads/2022/10/FV605BL.webp"
   },
   {
     "id": 3,
@@ -22,10 +22,10 @@
   },
   {
     "id": 4,
-    "nombre": "Auriculares Audio-Technica ATH-M50X",
+    "nombre": "Afinador",
     "categoria": "Accesorios",
-    "precio": 750,
-    "imagen": "https://images.unsplash.com/photo-1516116216624-53e697fedbea"
+    "precio": 25,
+    "imagen": "https://rimage.ripley.com.pe/home.ripley/Attachment/MKP/541/PMP00001808667/full_image-1.jpeg"
   },
   {
     "id": 5,
@@ -33,5 +33,62 @@
     "categoria": "Teclados",
     "precio": 600,
     "imagen": "https://musicmarket.com.pe/cdn/shop/files/344168025-otro-lado_700x700.jpg?v=1734125830"
+  },
+  {
+    "id": 6,
+    "nombre": "Violín Yamaha V3",
+    "categoria": "Cuerdas",
+    "precio": 300,
+    "imagen": "https://m.media-amazon.com/images/I/616lL6vk9XL.jpg"
+  },
+  {
+    "id": 7,
+    "nombre": "Arpa",
+    "categoria": "Cuerdas",
+    "precio": 500,
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/4/4f/A_musical_instrument._A_harp.jpg"
+  },
+  {
+    "id": 8,
+    "nombre": "Flauta dulce",
+    "categoria": "Viento",
+    "precio": 20,
+    "imagen": "https://musicmarket.com.pe/cdn/shop/products/57059003_1200x1200.jpg?v=1674059307"
+  },
+  {
+    "id": 9,
+    "nombre": "Clarinette Basse Prestige Buffet CramponSaxofón Alto Yamaha YAS-280",
+    "categoria": "Viento",
+    "precio": 2000,
+    "imagen": "https://m.media-amazon.com/images/I/51mdCUFfsBL.jpg"
+  },
+  {
+    "id": 10,
+    "nombre": "Trompeta",
+    "categoria": "Viento",
+    "precio": 400,
+    "imagen": "https://m.media-amazon.com/images/I/51uvFwTGKcL.jpg"
+  },
+  {
+    "id": 11,
+    "nombre": "Triangulo Musical",
+    "categoria": "Percusión",
+    "precio": 20,
+    "imagen": "https://static.lesluthiers.org/fotos/Instrumentos/formales/triangulo.png"
+  },
+  {
+    "id": 12,
+    "nombre": "Tambor",
+    "categoria": "Percusión",
+    "precio": 130,
+    "imagen": "https://www.musicalesdoris.com/cdn/shop/files/cec90edf910b5fd27ea07c4fabb4c7f2-tambor-calderon-kinder-caro-plastico-cthaly-y-baquetas.jpg"
+  },
+  {
+    "id": 13,
+    "nombre": "Piano",
+    "categoria": "Teclados",
+    "precio": 1800,
+    "imagen": "https://www.maene.be/media/catalog/product/cache/5b5fa8de22f3e459667ec7b9603ff715/Y/a/Yamaha_CVP_909GP_PE_2_a293.jpeg"
   }
+
 ]

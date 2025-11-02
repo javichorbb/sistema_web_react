@@ -14,7 +14,7 @@ function Header() {
     <header className="bg-white shadow-md sticky top-0 z-50">
       <div className="container mx-auto flex items-center justify-between px-6 py-4">
         {/* Logo */}
-        <h1 className="text-2xl font-bold text-blue-600">Web Musical</h1>
+        <h1 className="text-2xl font-bold text-blue-600">Musical world</h1>
 
         {/* Navegación desktop */}
         <nav className="hidden md:flex items-center space-x-8 font-medium">

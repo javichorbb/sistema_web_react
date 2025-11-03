@@ -4,91 +4,104 @@
     "nombre": "Guitarra Eléctrica Fender Stratocaster",
     "categoria": "Cuerdas",
     "precio": 3500,
-    "imagen": "https://www.audiostore.com.pe/wp-content/uploads/2020/11/Tobacco-Sunburst-OK1.jpg"
+    "imagen": "https://www.audiostore.com.pe/wp-content/uploads/2020/11/Tobacco-Sunburst-OK1.jpg",
+    "descripcion": "La Fender Stratocaster Standard es la guitarra ideal para quienes inician su camino musical con estilo y potencia. Diseñada para ofrecer una experiencia de interpretación cómoda y versátil, esta Strat destaca por su tono brillante y el diseño icónico que ha definido generaciones del rock, blues y pop. Con pastillas Fender de alta salida, un mástil de arce con perfil Modern 'C' y un puente de trémolo sincronizado de 2 puntos, esta guitarra eléctrica ofrece el característico sonido Fender a un precio accesible."
   },
   {
     "id": 2,
     "nombre": "Batería Acústica Pearl Export",
     "categoria": "Percusión",
     "precio": 2300,
-    "imagen": "https://www.samplesmusicales.com.pe/wp-content/uploads/2022/10/FV605BL.webp"
+    "imagen": "https://www.samplesmusicales.com.pe/wp-content/uploads/2022/10/FV605BL.webp",
+    "descripcion": "Este kit adopta algunas ideas de kits vintage, como un soporte para platillos montado directamente en la carcasa del bombo y espolones curvados del bombo, diferenciándolo aún más del típico kit compacto. El sonido enfocado pero profundo de la carcasa híbrida Mersawa/Poplar es perfecto para conciertos pequeños e íntimos"
   },
   {
     "id": 3,
     "nombre": "Teclado Yamaha PSR-E373",
     "categoria": "Teclados",
     "precio": 1800,
-    "imagen": "https://audioshop.com.pe/wp-content/uploads/2023/03/PSR-E373-600x600.jpg"
+    "imagen": "https://audioshop.com.pe/wp-content/uploads/2023/03/PSR-E373-600x600.jpg",
+    "descripcion": "El PSR-E373 de Yamaha es un arreglista portátil de 61 teclas diseñado para principiantes y aficionados. Está repleto de todo lo que necesita para crear excelentes piezas musicales, incluidas 622 voces de instrumentos, teclas sensibles a la velocidad, lecciones integradas y audio de USB a host. También obtiene acceso a SALite (Super Articulation Lite Voices) que agrega expresión y realismo adicionales al sonido"
   },
   {
     "id": 4,
     "nombre": "Afinador",
     "categoria": "Accesorios",
     "precio": 25,
-    "imagen": "https://rimage.ripley.com.pe/home.ripley/Attachment/MKP/541/PMP00001808667/full_image-1.jpeg"
+    "imagen": "https://rimage.ripley.com.pe/home.ripley/Attachment/MKP/541/PMP00001808667/full_image-1.jpeg",
+    "descripcion": "Afinador tipo clip con configuracion cromatica, guitarra, ukelele, bajo, violin y viento"
   },
   {
     "id": 5,
     "nombre": "Teclado NUX NEK-100",
     "categoria": "Teclados",
     "precio": 600,
-    "imagen": "https://musicmarket.com.pe/cdn/shop/files/344168025-otro-lado_700x700.jpg?v=1734125830"
+    "imagen": "https://musicmarket.com.pe/cdn/shop/files/344168025-otro-lado_700x700.jpg?v=1734125830",
+    "descripcion": "El NEK-100 combina la tecnología avanzada de NUX para producir un teclado completo y práctico para el escenario, el exterior y el hogar. Alimentado por su batería recargable interna o el adaptador de 12 V incluido, este instrumento es compacto y liviano, al mismo tiempo que ofrece una multitud de sonidos, estilos, efectos y opciones de acompañamiento. Un modo Live Music adicional ofrece 20 sabores de música y varios efectos."
   },
   {
     "id": 6,
     "nombre": "Violín Yamaha V3",
     "categoria": "Cuerdas",
     "precio": 300,
-    "imagen": "https://m.media-amazon.com/images/I/616lL6vk9XL.jpg"
+    "imagen": "https://m.media-amazon.com/images/I/616lL6vk9XL.jpg",
+    "descripcion": "El violín Yamaha V3 es un instrumento ideal para los estudiantes. El cuerpo de estilo Guarneri hace que sea muy cómodo para los instrumentistas jóvenes. La tapa de abeto y el dorso y laterales de arce ofrecen tonos claros y brillantes."
   },
   {
     "id": 7,
     "nombre": "Arpa",
     "categoria": "Cuerdas",
     "precio": 500,
-    "imagen": "https://upload.wikimedia.org/wikipedia/commons/4/4f/A_musical_instrument._A_harp.jpg"
+    "imagen": "https://upload.wikimedia.org/wikipedia/commons/4/4f/A_musical_instrument._A_harp.jpg",
+    "descripcion": "Instrumento de cuerda pulsada formado por un marco resonante y una serie variable de cuerdas tensadas entre la sección inferior y la superior."
   },
   {
     "id": 8,
     "nombre": "Flauta dulce",
     "categoria": "Viento",
     "precio": 20,
-    "imagen": "https://musicmarket.com.pe/cdn/shop/products/57059003_1200x1200.jpg?v=1674059307"
+    "imagen": "https://musicmarket.com.pe/cdn/shop/products/57059003_1200x1200.jpg?v=1674059307",
+    "descripcion": "Este modelo de 1 pieza, con digitación barroca, ofrece el punto de inicio perfecto para los músicos más pequeños. Diseñada específicamente para niños, está hecho de plástico robusto y puede limpiarse fácilmente bajo el agua fría."
   },
   {
     "id": 9,
-    "nombre": "Clarinette Basse Prestige Buffet CramponSaxofón Alto Yamaha YAS-280",
+    "nombre": "Clarinette Basse Prestige Buffet Crampon Saxofón Alto Yamaha YAS-280",
     "categoria": "Viento",
     "precio": 2000,
-    "imagen": "https://m.media-amazon.com/images/I/51mdCUFfsBL.jpg"
+    "imagen": "https://m.media-amazon.com/images/I/51mdCUFfsBL.jpg",
+    "descripcion": "El clarinete bajo profesional Buffet Crampon Prestige representa la artesanía en su máxima expresión, con un tono rico y bien centrado que es imprescindible para el estudiante serio o el músico de orquesta sinfónica profesional."
   },
   {
     "id": 10,
     "nombre": "Trompeta",
     "categoria": "Viento",
     "precio": 400,
-    "imagen": "https://m.media-amazon.com/images/I/51uvFwTGKcL.jpg"
+    "imagen": "https://m.media-amazon.com/images/I/51uvFwTGKcL.jpg",
+    "descripcion": "Instrumento más pequeño y agudo de la familia de los metales. Consta de un tubo parcialmente cilíndrico de sección pequeña que se ensancha progresivamente hasta llegar al pabellón o campana"
   },
   {
     "id": 11,
     "nombre": "Triangulo Musical",
     "categoria": "Percusión",
     "precio": 20,
-    "imagen": "https://static.lesluthiers.org/fotos/Instrumentos/formales/triangulo.png"
+    "imagen": "https://static.lesluthiers.org/fotos/Instrumentos/formales/triangulo.png",
+    "descripcion": "Instrumento que consiste en una varilla metálica doblada en forma triangular y suspendida de un cordón, la cual se hace sonar golpeándola con otra varilla también de metal."
   },
   {
     "id": 12,
     "nombre": "Tambor",
     "categoria": "Percusión",
     "precio": 130,
-    "imagen": "https://www.musicalesdoris.com/cdn/shop/files/cec90edf910b5fd27ea07c4fabb4c7f2-tambor-calderon-kinder-caro-plastico-cthaly-y-baquetas.jpg"
+    "imagen": "https://www.musicalesdoris.com/cdn/shop/files/cec90edf910b5fd27ea07c4fabb4c7f2-tambor-calderon-kinder-caro-plastico-cthaly-y-baquetas.jpg",
+    "descripcion": "Instrumento de percusión membranófono que consta de una caja de resonancia, golpeado, para producir el sonido, en el parche con la mano o con algún objeto, comúnmente baquetas; también se suele percutir la caja."
   },
   {
     "id": 13,
-    "nombre": "Piano",
+    "nombre": "Yamaha Clavinova CVP-909GP PE Negro pulido",
     "categoria": "Teclados",
     "precio": 1800,
-    "imagen": "https://www.maene.be/media/catalog/product/cache/5b5fa8de22f3e459667ec7b9603ff715/Y/a/Yamaha_CVP_909GP_PE_2_a293.jpeg"
+    "imagen": "https://www.maene.be/media/catalog/product/cache/5b5fa8de22f3e459667ec7b9603ff715/Y/a/Yamaha_CVP_909GP_PE_2_a293.jpeg",
+    "descripcion": "El Yamaha Clavinova CVP-909GP es el modelo insignia de la serie CVP-900. Este modelo ofrece más de 1500 voces que se pueden combinar con más de 500 estilos de acompañamiento diferentes. También incluye partituras interactivas."
   }
 
 ]

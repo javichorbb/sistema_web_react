@@ -7,6 +7,7 @@ import Productos from "./pages/Productos";
 import Contacto from "./pages/Contacto";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import ProductoDetalle from "./pages/ProductoDetalle";
 
 function App() {
   const [usuario, setUsuario] = useState(null);
@@ -26,6 +27,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/productos" element={<Productos />} />
+          <Route path="/producto/:id" element={<ProductoDetalle />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="/login" element={<Login onLogin={setUsuario} />} />
           <Route path="/register" element={<Register setUsuario={setUsuario} />} />

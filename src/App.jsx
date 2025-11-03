@@ -11,11 +11,11 @@ import Register from "./pages/Register";
 function App() {
   const [usuario, setUsuario] = useState(null);
 
-  // Cargar usuario activo desde localStorage al iniciar la app
+  // Cargar usuario guardado al iniciar la app
   useEffect(() => {
-    const usuarioGuardado = JSON.parse(localStorage.getItem("usuarioActivo"));
+    const usuarioGuardado = localStorage.getItem("usuarioActivo");
     if (usuarioGuardado) {
-      setUsuario(usuarioGuardado);
+      setUsuario(JSON.parse(usuarioGuardado));
     }
   }, []);
 
@@ -27,7 +27,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/productos" element={<Productos />} />
           <Route path="/contacto" element={<Contacto />} />
-          <Route path="/login" element={<Login setUsuario={setUsuario} />} />
+          <Route path="/login" element={<Login onLogin={setUsuario} />} />
           <Route path="/register" element={<Register setUsuario={setUsuario} />} />
         </Routes>
       </main>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
+import { useEffect } from "react";
 import usuariosData from "../data/usuarios.json";
 
 export default function Login({ onLogin }) {
@@ -10,23 +11,42 @@ export default function Login({ onLogin }) {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  // 🚫 Redirigir si ya hay sesión activa
+  useEffect(() => {
+    const usuarioActivo = localStorage.getItem("usuarioActivo");
+    if (usuarioActivo) {
+      navigate("/"); // Redirige al inicio
+    }
+  }, [navigate]);
+
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
-    const usuariosTotales = [...usuariosData, ...usuariosGuardados];
+    try {
+      const res = await fetch("http://localhost:5000/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
 
-    const usuario = usuariosTotales.find(
-      (u) => u.email === email && u.password === password
-    );
+      const data = await res.json();
 
-    if (usuario) {
-      setError("");
-      onLogin?.(usuario);
-      localStorage.setItem("usuarioActivo", JSON.stringify(usuario));
+      if (!res.ok) {
+        setError(data.message || "Credenciales inválidas");
+        return;
+      }
+
+      // Guardar sesión en localStorage
+      localStorage.setItem("usuarioActivo", JSON.stringify(data.usuario));
+
+      // Notificar al componente padre (si lo usas)
+      onLogin?.(data.usuario);
+
+      // Redirigir al inicio
       navigate("/");
-    } else {
-      setError("Usuario y/o contraseña incorrectos");
+    } catch (err) {
+      console.error("Error al iniciar sesión:", err);
+      setError("Error al conectar con el servidor");
     }
   };
 

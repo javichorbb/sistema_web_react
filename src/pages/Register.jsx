@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { UserPlus, Eye, EyeOff } from "lucide-react";
-import usuariosData from "../data/usuarios.json";
+import { Eye, EyeOff } from "lucide-react";
+import { useEffect } from "react";
 
 export default function Register() {
   const [nombre, setNombre] = useState("");
@@ -11,35 +11,47 @@ export default function Register() {
   const [mostrarPassword, setMostrarPassword] = useState(false);
   const navigate = useNavigate();
 
-  const handleRegister = (e) => {
+  // 🚫 Redirigir si ya hay sesión activa
+  useEffect(() => {
+    const usuarioActivo = localStorage.getItem("usuarioActivo");
+    if (usuarioActivo) {
+      navigate("/"); // Redirige al inicio
+    }
+  }, [navigate]);
+
+  const handleRegister = async (e) => {
     e.preventDefault();
 
-    const usuariosGuardados = JSON.parse(localStorage.getItem("usuarios")) || [];
-    const usuariosTotales = [...usuariosData, ...usuariosGuardados];
+    try {
+      const res = await fetch("http://localhost:5000/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombre, email, password }),
+      });
 
-    const existe = usuariosTotales.find((u) => u.email === email);
-    if (existe) {
-      setMensaje("⚠️ El correo ya está registrado.");
-      return;
+      const data = await res.json();
+
+      if (!res.ok) {
+        setMensaje(`⚠️ ${data.mensaje || "Error al registrar usuario"}`);
+        return;
+      }
+
+      setMensaje("Cuenta creada con éxito. Redirigiendo al login...");
+      setTimeout(() => navigate("/login"), 2000);
+    } catch (error) {
+      console.error("Error en el registro:", error);
+      setMensaje("Error al conectar con el servidor");
     }
-
-    const nuevoUsuario = { nombre, email, password };
-    const nuevosUsuarios = [...usuariosGuardados, nuevoUsuario];
-    localStorage.setItem("usuarios", JSON.stringify(nuevosUsuarios));
-
-    setMensaje("Cuenta creada con éxito. Redirigiendo al login...");
-    setTimeout(() => navigate("/login"), 2000);
   };
 
   return (
-    <div className="flex items-center justify-center min-h-[70vh]">
+    <div className="flex items-center justify-center min-h-[70vh] bg-gray-50">
       <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-8 border border-gray-200">
-
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-2">
           Crea tu cuenta
         </h2>
         <p className="text-center text-gray-500 mb-6 text-sm">
-          Únete a nuestra comunidad musical
+          Únete a nuestra comunidad musical 🎶
         </p>
 
         {mensaje && (
@@ -47,6 +59,8 @@ export default function Register() {
             className={`text-center mb-3 p-2 rounded-md text-sm ${
               mensaje.includes("⚠️")
                 ? "text-yellow-700 bg-yellow-100 border border-yellow-300"
+                : mensaje.includes("❌")
+                ? "text-red-700 bg-red-100 border border-red-300"
                 : "text-green-700 bg-green-100 border border-green-300"
             }`}
           >
@@ -55,6 +69,7 @@ export default function Register() {
         )}
 
         <form onSubmit={handleRegister} className="space-y-4">
+          {/* Nombre */}
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-1">
               Nombre completo <span className="text-red-500">*</span>
@@ -68,6 +83,7 @@ export default function Register() {
             />
           </div>
 
+          {/* Correo */}
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-1">
               Correo electrónico <span className="text-red-500">*</span>
@@ -81,6 +97,7 @@ export default function Register() {
             />
           </div>
 
+          {/* Contraseña */}
           <div>
             <label className="block text-sm font-semibold text-gray-700 mb-1">
               Contraseña <span className="text-red-500">*</span>
@@ -103,6 +120,7 @@ export default function Register() {
             </div>
           </div>
 
+          {/* Botón */}
           <button
             type="submit"
             className="w-full bg-green-600 text-white font-bold py-2 rounded-lg hover:bg-green-700 transition-colors"

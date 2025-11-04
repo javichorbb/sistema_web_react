@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Search, User, ShoppingCart } from "lucide-react";
+import { CartContext } from "./CartCarrito";
 
 export default function Header({ usuario, setUsuario }) {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const { carrito, toggleCarrito } = useContext(CartContext);
+
+  const totalItems = carrito.reduce((acc, it) => acc + (it.cantidad || 0), 0);
 
   const linkClass = ({ isActive }) =>
     isActive
@@ -28,9 +32,15 @@ export default function Header({ usuario, setUsuario }) {
         </h1>
 
         <nav className="hidden md:flex items-center space-x-8 font-medium">
-          <NavLink to="/" className={linkClass}>Home</NavLink>
-          <NavLink to="/productos" className={linkClass}>Productos</NavLink>
-          <NavLink to="/contacto" className={linkClass}>Contacto</NavLink>
+          <NavLink to="/" className={linkClass}>
+            Home
+          </NavLink>
+          <NavLink to="/productos" className={linkClass}>
+            Productos
+          </NavLink>
+          <NavLink to="/contacto" className={linkClass}>
+            Contacto
+          </NavLink>
         </nav>
 
         <div className="hidden md:flex items-center bg-gray-100 rounded-full px-4 py-2 w-1/3">
@@ -45,7 +55,9 @@ export default function Header({ usuario, setUsuario }) {
         <div className="hidden md:flex items-center space-x-4">
           {usuario ? (
             <>
-              <span className="text-gray-700 font-medium">Hola, {usuario.nombre}</span>
+              <span className="text-gray-700 font-medium">
+                Hola, {usuario.nombre}
+              </span>
               <button
                 onClick={handleLogout}
                 className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 transition"
@@ -63,8 +75,16 @@ export default function Header({ usuario, setUsuario }) {
             </NavLink>
           )}
 
-          <button className="flex items-center bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700 transition">
+          <button
+            onClick={toggleCarrito}
+            className="relative flex items-center bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700 transition"
+          >
             <ShoppingCart size={18} />
+            {totalItems > 0 && (
+              <span className="absolute -top-2 -right-2 bg-yellow-400 text-black text-xs font-bold px-2 py-0.5 rounded-full">
+                {totalItems}
+              </span>
+            )}
           </button>
         </div>
 
@@ -78,41 +98,23 @@ export default function Header({ usuario, setUsuario }) {
 
       {menuOpen && (
         <div className="md:hidden bg-gray-50 border-t text-center space-y-4 py-4 shadow-md">
-          <NavLink to="/" className={linkClass} onClick={() => setMenuOpen(false)}>Home</NavLink>
-          <NavLink to="/productos" className={linkClass} onClick={() => setMenuOpen(false)}>Productos</NavLink>
-          <NavLink to="/contacto" className={linkClass} onClick={() => setMenuOpen(false)}>Contacto</NavLink>
-
-          <div className="flex items-center justify-center px-4">
-            <input
-              type="text"
-              placeholder="Buscar..."
-              className="px-3 py-2 w-2/3 rounded-full border border-gray-300 text-gray-700 outline-none"
-            />
-            <button className="ml-2 bg-blue-600 text-white px-3 py-2 rounded-full hover:bg-blue-700">
-              <Search size={16} />
-            </button>
-          </div>
-
-          <div className="flex items-center justify-center space-x-4">
-            {usuario ? (
-              <>
-                <span className="text-gray-700 font-medium">Hola, {usuario.nombre}</span>
-                <button
-                  onClick={handleLogout}
-                  className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition"
-                >
-                  Cerrar sesión
-                </button>
-              </>
-            ) : (
-              <NavLink
-                to="/login"
-                className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 transition"
-              >
-                Mi cuenta
-              </NavLink>
-            )}
-          </div>
+          <NavLink to="/" className={linkClass} onClick={() => setMenuOpen(false)}>
+            Home
+          </NavLink>
+          <NavLink
+            to="/productos"
+            className={linkClass}
+            onClick={() => setMenuOpen(false)}
+          >
+            Productos
+          </NavLink>
+          <NavLink
+            to="/contacto"
+            className={linkClass}
+            onClick={() => setMenuOpen(false)}
+          >
+            Contacto
+          </NavLink>
         </div>
       )}
     </header>

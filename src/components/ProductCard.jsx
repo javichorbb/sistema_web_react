@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function ProductCard({ producto }) {
+function ProductCard({ producto, onAgregar }) {
   return (
     <div className="bg-white rounded-2xl shadow hover:shadow-lg transition p-4 flex flex-col">
       <img
@@ -15,17 +15,20 @@ function ProductCard({ producto }) {
       </span>
 
       <div className="flex justify-between gap-2 mt-4">
-        <button className="flex-1 bg-blue-600 text-white py-2 rounded-full hover:bg-blue-700 transition">
+        <button
+          onClick={onAgregar}
+          className="flex-1 bg-blue-600 text-white py-2 rounded-full hover:bg-blue-700 transition"
+        >
           Agregar al carrito
         </button>
 
         <Link
           to={`/producto/${producto.id}`}
-          className="flex-1 bg-gray-200 text-gray-800 text-center py-2 rounded-full hover:bg-gray-300 transition">
+          className="flex-1 bg-gray-200 text-gray-800 text-center py-2 rounded-full hover:bg-gray-300 transition"
+        >
           Ver detalle
         </Link>
       </div>
-      
     </div>
   );
 }

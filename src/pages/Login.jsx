@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import { useEffect } from "react";
-import usuariosData from "../data/usuarios.json";
 
 export default function Login({ onLogin }) {
   const [email, setEmail] = useState("");

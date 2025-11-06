@@ -1,12 +1,13 @@
 import { createContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const CartContext = createContext();
 
 export function CartCarrito({ children }) {
   const [carrito, setCarrito] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
-  // Agregar producto al carrito
   const agregarAlCarrito = (producto) => {
     setCarrito((prev) => {
       const exist = prev.find((p) => p.id === producto.id);
@@ -18,15 +19,13 @@ export function CartCarrito({ children }) {
         return [...prev, { ...producto, cantidad: 1 }];
       }
     });
-    setIsOpen(true); // abre carrito al agregar
+    setIsOpen(true);
   };
 
-  // Quitar producto del carrito
   const quitarDelCarrito = (id) => {
     setCarrito((prev) => prev.filter((p) => p.id !== id));
   };
 
-  // Cambiar cantidad de un producto
   const cambiarCantidad = (id, delta) => {
     setCarrito((prev) =>
       prev.map((p) => {
@@ -40,6 +39,11 @@ export function CartCarrito({ children }) {
   };
 
   const toggleCarrito = () => setIsOpen(!isOpen);
+
+  const irAComprar = () => {
+    setIsOpen(false);
+    navigate("/compra", { state: { carrito } });
+  };
 
   return (
     <CartContext.Provider
@@ -70,9 +74,11 @@ export function CartCarrito({ children }) {
           </button>
         </div>
 
-        <div className="p-4 flex flex-col gap-4 overflow-y-auto h-full">
+        <div className="p-4 flex flex-col gap-4 overflow-y-auto h-[calc(100%-150px)]">
           {carrito.length === 0 && (
-            <p className="text-gray-500">El carrito está vacío</p>
+            <p className="text-gray-500 text-center mt-6">
+              El carrito está vacío
+            </p>
           )}
 
           {carrito.map((p) => (
@@ -116,6 +122,22 @@ export function CartCarrito({ children }) {
             </div>
           ))}
         </div>
+
+        {/* Total y botón comprar */}
+        {carrito.length > 0 && (
+          <div className="p-4 border-t flex flex-col gap-2">
+            <h3 className="font-bold text-gray-700">
+              Total: S/.{" "}
+              {carrito.reduce((acc, p) => acc + p.precio * p.cantidad, 0)}
+            </h3>
+            <button
+              onClick={irAComprar}
+              className="bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition"
+            >
+              Comprar
+            </button>
+          </div>
+        )}
       </div>
     </CartContext.Provider>
   );

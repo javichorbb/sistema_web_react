@@ -10,6 +10,7 @@ import Register from "./pages/Register";
 import ProductoDetalle from "./pages/ProductoDetalle";
 import Carrito from "./pages/Carrito";
 import { CartCarrito } from "./components/CartCarrito";
+import FormularioCompra from "./pages/FormularioCompra";
 
 function App() {
   const [usuario, setUsuario] = useState(null);
@@ -35,6 +36,7 @@ function App() {
           <Route path="/login" element={<Login onLogin={setUsuario} />} />
           <Route path="/register" element={<Register setUsuario={setUsuario} />} />
           <Route path="/carrito" element={<Carrito />} />
+          <Route path="/compra" element={<FormularioCompra />} />
         </Routes>
       </main>
       <Footer />

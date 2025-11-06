@@ -8,6 +8,9 @@ export function CartCarrito({ children }) {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
+  // Suponemos que el usuario activo se guarda en localStorage
+  const usuarioActivo = JSON.parse(localStorage.getItem("usuarioActivo"));
+
   const agregarAlCarrito = (producto) => {
     setCarrito((prev) => {
       const exist = prev.find((p) => p.id === producto.id);
@@ -41,6 +44,11 @@ export function CartCarrito({ children }) {
   const toggleCarrito = () => setIsOpen(!isOpen);
 
   const irAComprar = () => {
+    if (!usuarioActivo) {
+      alert("❌ Debes iniciar sesión antes de comprar.");
+      navigate("/login");
+      return;
+    }
     setIsOpen(false);
     navigate("/compra", { state: { carrito } });
   };
@@ -123,7 +131,6 @@ export function CartCarrito({ children }) {
           ))}
         </div>
 
-        {/* Total y botón comprar */}
         {carrito.length > 0 && (
           <div className="p-4 border-t flex flex-col gap-2">
             <h3 className="font-bold text-gray-700">

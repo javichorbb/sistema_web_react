@@ -1,32 +1,43 @@
 [
   {
     "id": 1,
-    "nombre": "Jefferson",
-    "email": "jeff@example.com",
-    "password": "123456"
+    "nombre": "admin",
+    "email": "admin@email.com",
+    "password": "1234",
+    "rol": "admin"
   },
   {
     "id": 2,
     "nombre": "Maria",
     "email": "maria@example.com",
-    "password": "abcdef"
+    "password": "abcdef",
+    "rol": "usuario"
   },
   {
     "id": 3,
     "nombre": "javier",
     "email": "javier@email.com",
-    "password": "1234"
+    "password": "1234",
+    "rol": "usuario"
   },
   {
     "id": 4,
     "nombre": "kiko",
     "email": "kiko@email.com",
-    "password": "2020"
+    "password": "2020",
+    "rol": "usuario"
   },
   {
     "id": 5,
     "nombre": "chavo",
     "email": "chavo@email.com",
-    "password": "2025"
+    "password": "2025",
+    "rol": "usuario"
+  },
+  {
+    "id": 6,
+    "nombre": "pedro bravo",
+    "email": "bravo@email.com",
+    "password": "12345"
   }
 ]

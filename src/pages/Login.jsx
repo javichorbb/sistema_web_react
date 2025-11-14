@@ -42,7 +42,11 @@ export default function Login({ onLogin }) {
       onLogin?.(data.usuario);
 
       // Redirigir al inicio
-      navigate("/");
+      if (data.usuario.rol === "admin") {
+        navigate("/admin");
+      } else {
+        navigate("/");
+      }
     } catch (err) {
       console.error("Error al iniciar sesión:", err);
       setError("Error al conectar con el servidor");

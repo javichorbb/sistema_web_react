@@ -19,7 +19,7 @@ export default function FormularioCompra() {
   const handleSubmit = (e) => {
     e.preventDefault();
     alert("✅ ¡Gracias por su compra!");
-    navigate("/productos");
+    window.location.href = "/productos";
   };
 
   if (carrito.length === 0) {

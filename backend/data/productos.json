@@ -1,23 +1,5 @@
 [
   {
-    "id": 1,
-    "nombre": "Guitarra Eléctrica Fender Stratocaster",
-    "categoria": "Cuerdas",
-    "precio": 3500,
-    "stock": 5,
-    "imagen": "https://www.audiostore.com.pe/wp-content/uploads/2020/11/Tobacco-Sunburst-OK1.jpg",
-    "descripcion": "La Fender Stratocaster Standard es la guitarra ideal para quienes inician su camino musical con estilo y potencia. Diseñada para ofrecer una experiencia de interpretación cómoda y versátil, esta Strat destaca por su tono brillante y el diseño icónico que ha definido generaciones del rock, blues y pop. Con pastillas Fender de alta salida, un mástil de arce con perfil Modern 'C' y un puente de trémolo sincronizado de 2 puntos, esta guitarra eléctrica ofrece el característico sonido Fender a un precio accesible."
-  },
-  {
-    "id": 2,
-    "nombre": "Batería Acústica Pearl Export",
-    "categoria": "Percusión",
-    "precio": 2300,
-    "stock": 5,
-    "imagen": "https://www.samplesmusicales.com.pe/wp-content/uploads/2022/10/FV605BL.webp",
-    "descripcion": "Este kit adopta algunas ideas de kits vintage, como un soporte para platillos montado directamente en la carcasa del bombo y espolones curvados del bombo, diferenciándolo aún más del típico kit compacto. El sonido enfocado pero profundo de la carcasa híbrida Mersawa/Poplar es perfecto para conciertos pequeños e íntimos"
-  },
-  {
     "id": 3,
     "nombre": "Teclado Yamaha PSR-E373",
     "categoria": "Teclados",
@@ -106,5 +88,14 @@
     "stock": 20,
     "imagen": "https://www.musicalesdoris.com/cdn/shop/files/cec90edf910b5fd27ea07c4fabb4c7f2-tambor-calderon-kinder-caro-plastico-cthaly-y-baquetas.jpg",
     "descripcion": "Instrumento de percusión membranófono que consta de una caja de resonancia, golpeado, para producir el sonido, en el parche con la mano o con algún objeto, comúnmente baquetas; también se suele percutir la caja."
+  },
+  {
+    "id": 13,
+    "nombre": "Guitarra Eléctrica Fender Stratocaster",
+    "categoria": "Cuerdas",
+    "precio": 10000,
+    "stock": 20,
+    "imagen": "https://www.repdiscosperu.com/cdn/shop/files/9_cc8ccd46-0ba6-495c-90f8-667a35f11212.png",
+    "descripcion": "asd"
   }
 ]

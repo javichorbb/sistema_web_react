@@ -1,5 +1,6 @@
 import productos from "../data/productos.json";
 import ProductoCard from "../components/ProductCard";
+import { CartContext } from '../components/CartCarrito'
 
 function Home() {
   return (

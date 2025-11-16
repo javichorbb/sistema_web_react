@@ -23,80 +23,97 @@ import AdminProductoNuevo from "./admin/AdminProductoNuevo";
 import AdminProductoEditar from "./admin/AdminProductoEditar";
 
 
-// RUTA PROTEGIDA ADMIN
+// 🔒 RUTA PROTEGIDA PARA ADMIN
 function RutaProtegidaAdmin({ usuario, cargandoUsuario, children }) {
 
-  // ⏳ Evita redirigir mientras carga localStorage
-  if (cargandoUsuario) {
-    return <div className="p-6 text-center">Cargando...</div>;
-  }
+    if (cargandoUsuario) {
+        return <div className="p-6 text-center">Cargando...</div>;
+    }
 
-  // ❌ Si no hay usuario → login
-  if (!usuario) return <Navigate to="/login" />;
+    if (!usuario) return <Navigate to="/login" />;
 
-  // ❌ Si no es admin → home
-  if (usuario.rol !== "admin") return <Navigate to="/" />;
+    if (usuario.rol !== "admin") return <Navigate to="/" />;
 
-  // ✔ OK
-  return children;
+    return children;
 }
 
-
 function App() {
-  const [usuario, setUsuario] = useState(null);
-  const [cargandoUsuario, setCargandoUsuario] = useState(true);
 
-  // Cargar usuario guardado al iniciar la app
-  useEffect(() => {
-    const usuarioGuardado = localStorage.getItem("usuarioActivo");
-    if (usuarioGuardado) {
-      setUsuario(JSON.parse(usuarioGuardado));
-    }
-    setCargandoUsuario(false); // <--- muy importante
-  }, []);
+    const [usuario, setUsuario] = useState(null);
+    const [cargandoUsuario, setCargandoUsuario] = useState(true);
 
-  return (
-    <BrowserRouter>
-      <CartCarrito>
+    // 🔍 **ESTADO GLOBAL DE LA BUSQUEDA**
+    const [searchQuery, setSearchQuery] = useState("");
 
-        <Header usuario={usuario} setUsuario={setUsuario} />
+    useEffect(() => {
+        const usuarioGuardado = localStorage.getItem("usuarioActivo");
+        if (usuarioGuardado) {
+            setUsuario(JSON.parse(usuarioGuardado));
+        }
+        setCargandoUsuario(false);
+    }, []);
 
-        <main>
-          <Routes>
+    return (
+        <BrowserRouter>
+            <CartCarrito>
 
-            {/* --- RUTAS PÚBLICAS / USUARIO --- */}
-            <Route path="/" element={<Home />} />
-            <Route path="/productos" element={<Productos />} />
-            <Route path="/producto/:id" element={<ProductoDetalle />} />
-            <Route path="/contacto" element={<Contacto />} />
-            <Route path="/login" element={<Login onLogin={setUsuario} />} />
-            <Route path="/register" element={<Register setUsuario={setUsuario} />} />
-            <Route path="/carrito" element={<Carrito />} />
-            <Route path="/compra" element={<FormularioCompra />} />
+                {/* 🔍 El header actualiza la búsqueda */}
+                <Header
+                    usuario={usuario}
+                    setUsuario={setUsuario}
+                    onSearch={setSearchQuery}
+                />
 
-            {/* --- RUTAS ADMIN — PROTEGIDAS --- */}
-            <Route
-              path="/admin/*"
-              element={
-                <RutaProtegidaAdmin usuario={usuario} cargandoUsuario={cargandoUsuario}>
-                  <AdminLayout />
-                </RutaProtegidaAdmin>
-              }
-            >
-              <Route index element={<AdminDashboard />} />
-              <Route path="productos" element={<AdminProductos />} />
-              <Route path="productos/nuevo" element={<AdminProductoNuevo />} />
-              <Route path="productos/editar/:id" element={<AdminProductoEditar />} />
-            </Route>
+                <main>
+                    <Routes>
 
-          </Routes>
-        </main>
+                        {/* --- RUTAS PÚBLICAS / USUARIO --- */}
 
-        <Footer />
+                        {/* ✅ AHORA SÍ MANDAMOS searchQuery A HOME */}
+                        <Route
+                            path="/"
+                            element={<Home searchQuery={searchQuery} />}
+                        />
 
-      </CartCarrito>
-    </BrowserRouter>
-  );
+                        {/* 🔍 Productos también recibe la búsqueda */}
+                        <Route
+                            path="/productos"
+                            element={<Productos searchQuery={searchQuery} />}
+                        />
+
+                        <Route path="/producto/:id" element={<ProductoDetalle />} />
+                        <Route path="/contacto" element={<Contacto />} />
+                        <Route path="/login" element={<Login onLogin={setUsuario} />} />
+                        <Route path="/register" element={<Register setUsuario={setUsuario} />} />
+                        <Route path="/carrito" element={<Carrito />} />
+                        <Route path="/compra" element={<FormularioCompra />} />
+
+                        {/* --- RUTAS ADMIN PROTEGIDAS --- */}
+                        <Route
+                            path="/admin/*"
+                            element={
+                                <RutaProtegidaAdmin
+                                    usuario={usuario}
+                                    cargandoUsuario={cargandoUsuario}
+                                >
+                                    <AdminLayout />
+                                </RutaProtegidaAdmin>
+                            }
+                        >
+                            <Route index element={<AdminDashboard />} />
+                            <Route path="productos" element={<AdminProductos />} />
+                            <Route path="productos/nuevo" element={<AdminProductoNuevo />} />
+                            <Route path="productos/editar/:id" element={<AdminProductoEditar />} />
+                        </Route>
+
+                    </Routes>
+                </main>
+
+                <Footer />
+
+            </CartCarrito>
+        </BrowserRouter>
+    );
 }
 
 export default App;

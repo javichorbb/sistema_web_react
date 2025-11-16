@@ -3,12 +3,17 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { Search, User, ShoppingCart } from "lucide-react";
 import { CartContext } from "./CartCarrito";
 
-export default function Header({ usuario, setUsuario }) {
+// ➤ AGREGADO: Se incluye onSearch porque lo usas en el input
+export default function Header({ usuario, setUsuario, onSearch }) {
+
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const { carrito, toggleCarrito } = useContext(CartContext);
 
   const totalItems = carrito.reduce((acc, it) => acc + (it.cantidad || 0), 0);
+
+  /* Esto agregue */
+  const [searchTerm, setSearchTerm] = useState("");
 
   const linkClass = ({ isActive }) =>
     isActive
@@ -49,6 +54,13 @@ export default function Header({ usuario, setUsuario }) {
             type="text"
             placeholder="Buscar instrumentos..."
             className="bg-transparent outline-none flex-1 text-gray-700"
+            value={searchTerm}
+
+            // ➤ AGREGADO: Aquí se actualiza el estado y se envía el término al padre
+            onChange={(e) => { 
+              setSearchTerm(e.target.value);     // Actualiza el input
+              onSearch(e.target.value);          // Llama a la función de búsqueda
+            }}
           />
         </div>
 

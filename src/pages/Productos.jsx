@@ -1,26 +1,24 @@
 import { useEffect, useState, useContext } from 'react'
 import ProductCard from '../components/ProductCard'
-import { CartContext } from '../components/CartCarrito' // ajusta si tu export es diferente
+import { CartContext } from '../components/CartCarrito'
 
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000'
 
-export default function Productos() {
+// ✔ AGREGADO: Este componente recibe searchQuery desde App.jsx
+export default function Productos({ searchQuery }) {   
   const [productos, setProductos] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
-  // filtros / UI
+  // filtros
   const [isFiltroAbierto, setIsFiltroAbierto] = useState(false)
   const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('Todas')
 
-  // carrito (opcional)
   let agregarAlCarrito = () => {}
   try {
     const ctx = useContext(CartContext)
     if (ctx && ctx.agregarAlCarrito) agregarAlCarrito = ctx.agregarAlCarrito
-  } catch (e) {
-    // si no existe context, se ignora
-  }
+  } catch (e) {}
 
   useEffect(() => {
     let mounted = true
@@ -41,15 +39,25 @@ export default function Productos() {
 
   const categorias = ['Todas', ...Array.from(new Set(productos.map(p => p.categoria)))]
 
-  const productosFiltrados = productos.filter(p =>
-    categoriaSeleccionada === 'Todas' ? true : p.categoria === categoriaSeleccionada
-  )
+  // 🔍 FILTRO POR CATEGORÍA + BÚSQUEDA
+  // ✔ AGREGADO: searchQuery viene desde el Header → App → Productos
+  const productosFiltrados = productos.filter(p => {
+    const coincideCategoria = categoriaSeleccionada === 'Todas' ? true : p.categoria === categoriaSeleccionada
+
+    const coincideBusqueda =
+      p.nombre.toLowerCase().includes(searchQuery.toLowerCase()) ||               // ← Busca por nombre
+      p.descripcion?.toLowerCase().includes(searchQuery.toLowerCase()) ||        // ← Busca por descripción
+      p.categoria.toLowerCase().includes(searchQuery.toLowerCase())              // ← Busca por categoría
+
+    return coincideCategoria && coincideBusqueda
+  })
 
   return (
     <div className="container mx-auto px-6 py-10">
       <h1 className="text-3xl font-bold text-center text-blue-600 mb-8">🎶 Catálogo de Productos</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        {/* PANEL DE FILTROS */}
         <aside className="md:col-span-1 bg-white shadow-lg rounded-2xl p-4 self-start">
           <button
             onClick={() => setIsFiltroAbierto(!isFiltroAbierto)}
@@ -76,6 +84,7 @@ export default function Productos() {
           </div>
         </aside>
 
+        {/* LISTADO DE PRODUCTOS */}
         <section className="md:col-span-3">
           <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {productosFiltrados.map((p) => (
@@ -88,7 +97,9 @@ export default function Productos() {
           </div>
 
           {productosFiltrados.length === 0 && (
-            <p className="text-center text-gray-500 mt-10">No hay productos en esta categoría.</p>
+            <p className="text-center text-gray-500 mt-10">
+              No hay productos que coincidan con la búsqueda.
+            </p>
           )}
         </section>
       </div>

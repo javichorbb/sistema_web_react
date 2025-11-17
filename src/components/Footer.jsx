@@ -16,10 +16,10 @@ function Footer() {
         <div>
           <h3 className="text-lg font-semibold text-white mb-3">Enlaces rápidos</h3>
           <ul className="space-y-2">
-            <li><a href="#" className="hover:text-blue-400 transition">Inicio</a></li>
-            <li><a href="#" className="hover:text-blue-400 transition">Productos</a></li>
-            <li><a href="#" className="hover:text-blue-400 transition">Contacto</a></li>
-            <li><a href="#" className="hover:text-blue-400 transition">Mi cuenta</a></li>
+            <li><a href="/" className="hover:text-blue-400 transition">Inicio</a></li>
+            <li><a href="/productos" className="hover:text-blue-400 transition">Productos</a></li>
+            <li><a href="/contacto" className="hover:text-blue-400 transition">Contacto</a></li>
+            <li><a href="/login" className="hover:text-blue-400 transition">Mi cuenta</a></li>
           </ul>
         </div>
 

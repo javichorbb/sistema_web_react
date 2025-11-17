@@ -149,6 +149,44 @@ app.delete("/api/productos/:id", (req, res) => {
   res.json({ success: true, message: "Producto eliminado" });
 });
 
+// ACTUALIZAR STOCK DESPUÉS DE COMPRA
+app.post("/api/compra/actualizar-stock", (req, res) => {
+  const { productos } = req.body; // Array de {id, cantidad}
+
+  let productosDB = JSON.parse(fs.readFileSync(PRODUCTOS_PATH));
+
+  // Verificar stock disponible antes de procesar
+  for (const item of productos) {
+    const producto = productosDB.find((p) => p.id === item.id);
+    if (!producto) {
+      return res.status(404).json({
+        success: false,
+        message: `Producto con ID ${item.id} no encontrado`
+      });
+    }
+    if (producto.stock < item.cantidad) {
+      return res.status(400).json({
+        success: false,
+        message: `Stock insuficiente para ${producto.nombre}. Disponible: ${producto.stock}, Solicitado: ${item.cantidad}`
+      });
+    }
+  }
+
+  // Actualizar stock
+  productos.forEach((item) => {
+    const index = productosDB.findIndex((p) => p.id === item.id);
+    if (index !== -1) {
+      productosDB[index].stock -= item.cantidad;
+    }
+  });
+
+  fs.writeFileSync(PRODUCTOS_PATH, JSON.stringify(productosDB, null, 2));
+
+  res.json({
+    success: true,
+    message: "Stock actualizado correctamente"
+  });
+});
 
 
 app.listen(5000, () => console.log("Servidor corriendo en puerto 5000"));

@@ -4,25 +4,16 @@
     "nombre": "Teclado Yamaha PSR-E373",
     "categoria": "Teclados",
     "precio": 1800,
-    "stock": 5,
+    "stock": 14,
     "imagen": "https://audioshop.com.pe/wp-content/uploads/2023/03/PSR-E373-600x600.jpg",
     "descripcion": "El PSR-E373 de Yamaha es un arreglista portátil de 61 teclas diseñado para principiantes y aficionados. Está repleto de todo lo que necesita para crear excelentes piezas musicales, incluidas 622 voces de instrumentos, teclas sensibles a la velocidad, lecciones integradas y audio de USB a host. También obtiene acceso a SALite (Super Articulation Lite Voices) que agrega expresión y realismo adicionales al sonido"
-  },
-  {
-    "id": 4,
-    "nombre": "Afinador",
-    "categoria": "Accesorios",
-    "precio": 25,
-    "stock": 5,
-    "imagen": "https://rimage.ripley.com.pe/home.ripley/Attachment/MKP/541/PMP00001808667/full_image-1.jpeg",
-    "descripcion": "Afinador tipo clip con configuracion cromatica, guitarra, ukelele, bajo, violin y viento"
   },
   {
     "id": 5,
     "nombre": "Teclado NUX NEK-100",
     "categoria": "Teclados",
     "precio": 600,
-    "stock": 5,
+    "stock": 12,
     "imagen": "https://musicmarket.com.pe/cdn/shop/files/344168025-otro-lado_700x700.jpg?v=1734125830",
     "descripcion": "El NEK-100 combina la tecnología avanzada de NUX para producir un teclado completo y práctico para el escenario, el exterior y el hogar. Alimentado por su batería recargable interna o el adaptador de 12 V incluido, este instrumento es compacto y liviano, al mismo tiempo que ofrece una multitud de sonidos, estilos, efectos y opciones de acompañamiento. Un modo Live Music adicional ofrece 20 sabores de música y varios efectos."
   },
@@ -57,7 +48,7 @@
     "id": 9,
     "nombre": "Clarinette Basse Prestige Buffet",
     "categoria": "Viento",
-    "precio": 2000,
+    "precio": 1200,
     "stock": 5,
     "imagen": "https://m.media-amazon.com/images/I/51mdCUFfsBL.jpg",
     "descripcion": "El clarinete bajo profesional Buffet Crampon Prestige representa la artesanía en su máxima expresión, con un tono rico y bien centrado que es imprescindible para el estudiante serio o el músico de orquesta sinfónica profesional."
@@ -88,14 +79,5 @@
     "stock": 20,
     "imagen": "https://www.musicalesdoris.com/cdn/shop/files/cec90edf910b5fd27ea07c4fabb4c7f2-tambor-calderon-kinder-caro-plastico-cthaly-y-baquetas.jpg",
     "descripcion": "Instrumento de percusión membranófono que consta de una caja de resonancia, golpeado, para producir el sonido, en el parche con la mano o con algún objeto, comúnmente baquetas; también se suele percutir la caja."
-  },
-  {
-    "id": 13,
-    "nombre": "Guitarra Eléctrica Fender Stratocaster",
-    "categoria": "Cuerdas",
-    "precio": 10000,
-    "stock": 20,
-    "imagen": "https://www.repdiscosperu.com/cdn/shop/files/9_cc8ccd46-0ba6-495c-90f8-667a35f11212.png",
-    "descripcion": "asd"
   }
 ]

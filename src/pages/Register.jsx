@@ -51,7 +51,7 @@ export default function Register() {
           Crea tu cuenta
         </h2>
         <p className="text-center text-gray-500 mb-6 text-sm">
-          Únete a nuestra comunidad musical 🎶
+          Únete a nuestra comunidad musical
         </p>
 
         {mensaje && (

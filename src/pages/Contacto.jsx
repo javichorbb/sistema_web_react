@@ -2,7 +2,7 @@ export default function Contacto() {
   return (
     <div className="container mx-auto px-6 py-10 max-w-lg">
       <h1 className="text-3xl font-bold text-center text-blue-600 mb-6">
-        📩 Contáctanos
+        Contáctanos
       </h1>
 
       <form className="bg-white p-6 rounded-2xl shadow-md flex flex-col gap-4">
